@@ -28,8 +28,8 @@
   box-shadow: 0 3px 7px 1px rgba(0, 0, 0, 0.32), 0 0 0 1px rgba(0, 0, 0, 0.1);
   background-color: @window_bg;
   border: none;
-  border-radius: 12px;
-  margin: 40px -12px;
+  border-radius: 40px;
+  /*margin: 14px;*/
 }
 
 .input {
@@ -58,7 +58,20 @@
 
 .selected.item-box {
     background-color: @item_box_selected;
-    border-radius: 5px;
+    border-radius: 40px;
+}
+/* Frequent apps grid: the tile selection has its own class and a built-in
+ * 4px radius, so match that selector (with .result-grid for specificity). */
+.result-grid .selected.grid-item-box {
+    border-radius: 20px;
+}
+/* The shared .result-box below pulls the grid tight against the window: a -4px
+ * bottom margin and only 6px sides. The window has a 40px radius, so its rounded
+ * corners cut into the bottom-row and outer-column tiles. Pad the grid itself
+ * away from the window edges (this targets .result-grid, so the list layout's
+ * .result-box margins are untouched) and cancel the inherited bottom pull. */
+.result-grid {
+    margin: 0 14px 14px 14px;
 }
 .selected.item-box .item-text {
     color: @item_text_selected;
